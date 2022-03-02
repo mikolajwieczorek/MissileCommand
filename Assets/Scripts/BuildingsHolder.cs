@@ -41,6 +41,7 @@ public class BuildingsHolder : MonoBehaviour
             } while (!buildings[rand].activeSelf);
             return buildings[rand].transform.position;
         }
+        GameController.Instance.GameOver();
         return Vector2.zero;
     }
 }

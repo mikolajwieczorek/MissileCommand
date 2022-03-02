@@ -35,7 +35,6 @@ public class Missile : MonoBehaviour
 		{
 			if (dotsArray[i] == null)
 			{
-				Debug.Log("...BREAK!");
 				break;
 			}
 			else
@@ -108,10 +107,4 @@ public class Missile : MonoBehaviour
 			actualDot = 0;
 	}
 	#endregion
-
-	//Detects collisions
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		
-	}
 }

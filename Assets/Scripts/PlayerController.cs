@@ -35,14 +35,17 @@ public class PlayerController : MonoBehaviour
 
     private void LaunchOnKey(GameObject tower)
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); //Assign mouse position for later use
-        if (mousePos.y < -3)
-            mousePos.y = -3;
-
-        Vector2 startingPos = tower.GetComponent<Tower>().TowerPosition();
-        if (startingPos != new Vector2(-10, -10))
+        if (tower.gameObject.activeSelf)
         {
-            MissileSpawnPool.Instance.LaunchMissile(startingPos, mousePos, 0.5f, "Player"); //Spawn missile
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); //Assign mouse position for later use
+            if (mousePos.y < -3)
+                mousePos.y = -3;
+
+            Vector2 startingPos = tower.GetComponent<Tower>().TowerPosition();
+            if (startingPos != new Vector2(-10, -10))
+            {
+                MissileSpawnPool.Instance.LaunchMissile(startingPos, mousePos, 0.5f, "Player"); //Spawn missile
+            }
         }
     }
 }

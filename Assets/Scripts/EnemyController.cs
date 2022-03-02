@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     {
         Vector2 startPosition = RandomizeStartPosition();
         Vector2 destinationPosition = RandomizeTarget();
-        MissileSpawnPool.Instance.LaunchMissile(startPosition, destinationPosition, 25f, "Enemy");
+        MissileSpawnPool.Instance.LaunchMissile(startPosition, destinationPosition, GameController.Instance.timeToReachDestination, "Enemy");
     }
 
     private Vector2 RandomizeStartPosition()
@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(0.25f, 2f));
+            yield return new WaitForSeconds(Random.Range(GameController.Instance.minSpawnSpeed, GameController.Instance.maxSpawnSpeed));
             LaunchMissile();
         }
     }

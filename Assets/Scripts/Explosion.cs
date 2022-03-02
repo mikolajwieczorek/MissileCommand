@@ -24,10 +24,17 @@ public class Explosion : MonoBehaviour
 	{
 		if (collision.CompareTag("Enemy"))
 		{
+			GameController.Instance.IncreaseScore();
 			collision.gameObject.GetComponent<Missile>().TimeToExplode();
 			return;
 		}
-		if(collision.CompareTag("Dot") || collision.CompareTag("Building") || collision.CompareTag("Tower"))
+		else if (collision.CompareTag("Building") || collision.CompareTag("Tower"))
+		{
+			collision.gameObject.SetActive(false);
+			GameController.Instance.DecreaseScore();
+		}
+
+		if (collision.CompareTag("Dot"))
 			collision.gameObject.SetActive(false);
 	}
 }
